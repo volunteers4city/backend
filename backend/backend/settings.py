@@ -169,12 +169,20 @@ DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
     'USER_CREATE_PASSWORD_RETYPE': True,
-    # 'SERIALIZERS': {'user': 'api.serializers.UserSerializer',
-    #                 'current_user': 'api.serializers.UserSerializer',
-    #                 'user_create': 'api.serializers.UserCreateSerializer', },
-    # 'PERMISSIONS': {'user': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
-    #                 'user_list': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
-    #                 'user_delete': ['rest_framework.permissions.IsAdminUser'], },
+
+    'PERMISSIONS': {'activation': ['rest_framework.permissions.IsAdminUser'],
+                    'password_reset': ['rest_framework.permissions.AllowAny'],
+                    'password_reset_confirm': ['rest_framework.permissions.AllowAny'],
+                    'set_password': ['rest_framework.permissions.CurrentUserOrAdmin'],
+                    'username_reset': ['rest_framework.permissions.IsAdminUser'],
+                    'username_reset_confirm': ['rest_framework.permissions.IsAdminUser'],
+                    'set_username': ['rest_framework.permissions.IsAdminUser'],
+                    'user_create': ['rest_framework.permissions.IsAdminUser'],
+                    'user_delete': ['rest_framework.permissions.IsAdminUser'],
+                    'user': ['rest_framework.permissions.IsAdminUser'],
+                    'user_list': ['rest_framework.permissions.IsAdminUser'],
+                    'token_create': ['rest_framework.permissions.AllowAny'],
+                    'token_destroy': ['rest_framework.permissions.IsAuthenticated'], },
 }
 
 CORS_ALLOWED_ORIGINS = [
